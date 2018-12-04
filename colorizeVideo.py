@@ -2,7 +2,7 @@ import imageio, os, shutil, json
 import Algorithmia
 from Algorithmia.acl import ReadAcl, AclType
 
-reader = imageio.get_reader('roadkill.mp4')
+reader = imageio.get_reader('../roadkill.mp4')
 fps = reader.get_meta_data()['fps']
 
 #writer = imageio.get_writer('roadkill_colorized.mp4', fps=fps)
@@ -11,8 +11,8 @@ out_dir = os.path.join(os.getcwd(), 'images')
 out_dir_colorized = os.path.join(os.getcwd(), 'colorized_images')
 
 # Authenticate with your API key
-f = open(“apikey”, “r”) 
-apiKey = f.read() 
+f = open("apikey", "r") 
+apiKey = f.read().splitlines()[0]
 # Create the Algorithmia client object
 client = Algorithmia.client(apiKey)
 
